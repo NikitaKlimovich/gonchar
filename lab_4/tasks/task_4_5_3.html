@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task 4.5.3</title>
+    <link rel="stylesheet" href="../style.css" />
+
+    <script>
+      function light_logo(ii, duration) {
+        //проявление картинки для данного типа перехода
+        ii = Number(ii);
+        ImageLogo.filters.revealtrans.Apply();
+        ImageLogo.filters.revealtrans.transition = ii;
+        ImageLogo.filters.revealtrans.duration = duration;
+        ImageLogo.style.visibility = "visible";
+        ImageLogo.filters.revealtrans.play();
+      }
+    </script>
+
+  </head>
+
+  <body>
+
+    <div style="text-align: center;">
+      <div style="text-align: left; margin-left: 45%;">
+        <form name="frm">
+          <input name="trns" type="text" value="15" size="3" />
+          <b><big> Type: 0...23</big></b>
+
+          <br>
+          <input name="duration" type="text" value="1" size="3" />
+          <b><big> Seconds </big></b>
+          <br>
+
+          <input
+            type="button"
+            value="Apply"
+            onClick='ImageLogo.style.visibility="hidden";
+            light_logo(frm.trns.value, frm.duration.value);'
+          />
+        </form>
+      </div>
+
+      <img
+        id="ImageLogo"
+        src="./img/beach.jpg"
+        style="filter: revealtrans(); width: 600px; height: 300px;"
+      />
+    </div>
+
+  </body>
+</html>

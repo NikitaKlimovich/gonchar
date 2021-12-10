@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Task 4.5.2</title>
+  </head>
+
+  <script>
+     function pointFilter(){
+         img4.filters.light.addPoint(300,150,50,50,100,300,100);
+     }
+  </script>
+
+  <style type="text/css">
+    img{
+      /*max-width: 100%;*/
+      /*max-height: 100%;*/
+      width: 600px;
+      height: 300px;
+    }
+  </style>
+
+  <body onLoad="pointFilter()">
+    <table>
+      <tr>
+
+        <td>
+          <h2>Original image</h2>
+          <img id="img1" src="./img/beach.jpg" />
+        </td>
+
+        <td>
+          <h2>With flipv filter</h2>
+          <img id="img2" src="./img/beach.jpg" style="filter:flipv();"/>
+        </td>
+
+      </tr>
+
+      <tr>
+
+        <td>
+          <h2>Original image</h2>
+          <img id="img3" src="./img/beach.jpg" />
+        </td>
+
+        <td>
+          <h2>With light filter</h2>
+          <img id="img4" src="./img/beach.jpg" style="filter:light();"/>
+        </td>
+
+      </tr>
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Task 4.5.5</title>
+  </head>
+  <body>
+    <div id="input">
+      <input type="file" id="inputFile" onchange="showFile(this)" />
+    </div>
+    <br>
+    <div id="fileContent"></div>
+  </body>
+</html>
+
+<style type="text/css">
+  #input{
+    text-align: center;
+  }
+  #fileContent{
+    text-align: center;
+  }
+
+  a{
+    display: block;
+    text-align: center;
+  }
+</style>
+
+<script>
+  function showFile(input) {
+    let file = input.files[0];
+    // file = fetch('products.txt').then(response => response.text()).then(text => console.log(text))
+    let reader = new FileReader();
+    let productCodes = new Array();
+    let productNames = new Array();
+    let productPrices = new Array();
+    let productFiles = new Array();
+
+    reader.readAsText(file);
+
+    reader.onload = function () {
+      let rows = reader.result.split("\n");
+      rows.forEach((element) => {
+        let splitedString = element.split("#");
+        productCodes.push(splitedString[0]);
+        productNames.push(splitedString[1]);
+        productPrices.push(splitedString[2]);
+        productFiles.push(splitedString[3]);
+      });
+
+      let html = new Array();
+
+      for (let i=0; i<productNames.length; i++){
+        let link = '<a href="./' + productFiles[i] + '">' + productNames[i] + "</a>";
+        document.getElementById("fileContent").innerHTML += link;
+      }
+    };
+  }
+</script>

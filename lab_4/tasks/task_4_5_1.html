@@ -1,0 +1,41 @@
+<HTML>
+  <HEAD>
+     <TITLE>Frame-slides</TITLE>
+     <SCRIPT LANGUAGE="JavaScript">
+        var defSize = 65;
+        function display(f) {
+           var newRows = "";
+           // Определение местоположения первого фрейма в коллекции all
+           var elFrame = document.all.tags("FRAME");
+           for (var intFrames = 0; intFrames < frames.length; intFrames++) {
+              var curF = frames[intFrames].document;
+              if (curF.body == f.document.body) {
+                 // Предоставление всего пространства выделенному фрейму
+                 newRows += "*, ";
+                 /* Увеличение заголовка */
+                 curF.all.header.style.fontSize = "200%";
+                 /* Включение полос прокрутки в активном фрейме
+                      путём доступа к элементу FRAME.  */
+                 elFrame[intFrames].scrolling = "yes";
+              }
+              else {
+                 // Установка размера по умолчанию
+                 newRows += defSize.toString() + ", ";
+                 // Сброс изменений размера и шрифта заголовка
+                 curF.all.header.style.fontSize = "";
+                 // Отключение прокручивания
+         document.all[intFrames].scrolling="no"
+              }
+           }
+           document.body.rows = newRows;
+        }
+     </SCRIPT>
+  </HEAD>
+  <FRAMESET ROWS="*, 65, 65, 65, 65">
+     <FRAME SRC="frame1.html" NORESIZE>
+     <FRAME SRC="frame2.html" NORESIZE SCROLLING="No">
+     <FRAME SRC="frame3.html" NORESIZE SCROLLING="No">
+     <FRAME SRC="frame4.html" NORESIZE SCROLLING="No">
+     <FRAME SRC="frame5.html" NORESIZE SCROLLING="No">
+  </FRAMESET>
+</HTML>
