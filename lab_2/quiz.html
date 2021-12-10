@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>World Weather</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <script type="text/javascript">
+        function check_quiz() {
+            console.log('checking')
+            
+            const question_1 = document.getElementsByName('question1')
+            const question_2 = document.getElementsByName('question2')
+            const question_3 = document.getElementsByName('question3')
+            const question_4 = document.getElementsByName('question4')
+
+            var result = 0
+
+            if (question_1[0].checked &&
+                !question_1[1].checked &&
+                !question_1[2].checked)
+            { result += 1 }
+
+            if (question_2[0].checked &&
+                !question_2[1].checked &&
+                question_2[2].checked)
+            { result += 1 }
+
+            if (question_3[0].value == 'Minsk')
+            { result += 1 }
+
+            if (!question_4[0].checked &&
+                !question_4[1].checked &&
+                question_4[2].checked)
+            { result += 1 }
+
+            alert('RESULT: ' + result)
+
+        // WITH % AND PENALTY
+            // value = 1
+            // if (question_1[0].checked) {result += value}
+            // if (question_1[1].checked) {result -= value/3}
+            // if (question_1[2].checked) {result -= value/3}
+
+            // if (question_2[0].checked) {result += value/2}
+            // if (question_2[1].checked) {result -= value/3}
+            // if (question_2[2].checked) {result += value/2}
+
+            // if (question_3[0].value == 'Minsk') {result += value}
+            // else {result -= 0.5}
+
+            // if (question_4[0].checked) {result -= value/3}
+            // if (question_4[1].checked) {result -= value/3}
+            // if (question_4[2].checked) {result += value}
+
+            // alert('RESULT: ' + ((result < 0) ? 0 : result.toFixed(2))*25 + '%')
+        }
+
+// for (let i=0; i<questions.length; i++){
+//     var question = questions[i]
+//     console.log(question)
+
+//     for (let j=0; j<question.length; j++){
+//         if (question[j])
+//         console.log(question[j])
+
+//     }
+// }
+
+
+    </script>
+
+    <body>
+        <div class="container">
+            <nav class="main-header">
+                <a class="logo" href="index.html">World Weather</a>
+            </nav>
+            
+            <div class="content-3">
+                <h2>Weather Quiz</h2>
+                <p>
+                    Earth is split up into a number of timezones.
+                    Most timezones are exactly one hour apart, and by convention compute
+                    their local time as an offset from UTC or GMT. In many locations,
+                    these offsets vary twice yearly due to DST transitions. Every country
+                    may have a particular standard time zone though, if it is more
+                    convenient for its world cooperation. The standard time zone is a
+                    region where the local or national authorities unify the time for a
+                    particular goal. The time zones obey specific rules referring to longitude.
+                </p>
+
+                <br>
+            </div>
+
+            <table id="quiz">
+                <tr>
+                    <td style="max-width: 50px;">
+                        Question 1:
+                        If it is more convenient for its world cooperation.
+                        The standard time zone is a region where the local or national authorities?
+                    </td>
+
+                    <td>
+                        <input type="radio" id="radio1" name='question1'>
+                        <label for="radio1">Europe</label>
+                        <br>
+                        <input type="radio" id="radio2" name="question1">
+                        <label for="radio2">Asia</label>
+                        <br>
+                        <input type="radio" id="radio3" name="question1">
+                        <label for="radio3">America</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Question 2:
+                        Though, if it is more
+                        convenient for its world cooperation. The standard time zone is a
+                        region where the local or national authorities?
+                    </td>
+
+                    <td>
+                        <input type="checkbox" id="checkbox1" name="question2">
+                        <label for="checkbox1"> Minsk</label><br>
+                        <input type="checkbox" id="checkbox2" name="question2">
+                        <label for="checkbox2"> Singapore</label><br>
+                        <input type="checkbox" id="checkbox3" name="question2">
+                        <label for="checkbox3"> London</label><br>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Question 3:
+                        Time zone though, if it is more
+                        convenient for its world cooperation. The standard time zone is a
+                        region where the local or national authorities?
+                    </td>
+                    <td>
+                        <textarea style="font-size: large;" id="text-area" name="question3" rows="2" cols="15"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="max-width: 50px;">
+                        Question 4:
+                        If it is more convenient for its world cooperation.
+                        The standard time zone is a region where the local or national authorities?
+                    </td>
+
+                    <td>
+                        <input type="radio" id="radio4" name='question4'>
+                        <label for="radio4">100</label>
+                        <br>
+                        <input type="radio" id="radio5" name="question4">
+                        <label for="radio5">100 000</label>
+                        <br>
+                        <input type="radio" id="radio6" name="question4">
+                        <label for="radio6">0</label>
+                    </td>
+                </tr>
+
+            </table>
+
+            <button id='btn-check' onclick="check_quiz()" style="width: 500px; height: 100px; font-size: 1.5em;">check</button>
+
+            <div style="height: 30vh;"></div>
+        </div>
+    </body>
+</html>

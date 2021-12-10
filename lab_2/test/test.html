@@ -1,0 +1,144 @@
+<HTML>
+    <HEAD>
+        <TITLE>lab 2</TITLE>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style_2_8b.css" type="text/css">
+        <style type="text/css">
+        *{
+            /*border: 1px dotted black;*/
+        }
+
+        .button{
+            display: block;
+            border: 2px solid red;
+            margin: 50px auto;
+            width: 10%;
+            height: 10%;
+        }
+
+        .button:hover {
+            background-color: turquoise;
+        }
+
+        </style>
+
+        <script type="text/javascript">
+        // TASK 1 ==================================================
+            function call_alert() {
+                    alert('ALERT')
+                }
+
+            function call_prompt() {
+                prompt("enter some data", "sample data");
+            }
+
+            function call_confirm() {
+                confirm("CONFIRM")
+            }
+
+        // TASK 2 ==================================================
+            function writeCookie(arg, value) {
+                document.cookie = arg + '=' + value
+            }
+
+            function readCookie(cname) {
+              let name = cname + "=";
+              let decodedCookie = decodeURIComponent(document.cookie);
+              let ca = decodedCookie.split(';');
+              for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+                }
+              }
+              return "";
+            }
+
+            function read_data() {
+                var name = readCookie('name')
+                var year = readCookie('year')
+                var group = readCookie('group')
+                alert(name + '\nbirth year ' + year + '\nfrom group ' + group)
+            }
+
+            function write_data() {
+                var name = prompt("Your name: ")
+                var year = prompt("Your birth year: ")
+                var group = prompt("Your group: ")
+                writeCookie('name', name)
+                writeCookie('year', year)
+                writeCookie('group', group)
+            }
+
+        // TASK 3 ==================================================
+            function get_month() {
+                var month_list_en = ['January', 'February', 'March', 'April', 'May',
+                'June', 'July', 'August', 'September', 'October', 'Noveber', 'December']
+                
+                var month_list_ru = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май',
+                'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+
+                var month_list_la = ['Lanuarius', 'Februarius', 'Martius', 'Aprilis',
+                'Maius', 'Lunius', 'Quintilis', 'Sextilis', 'September', 'October',
+                'November', 'December']
+                
+                var len = prompt('Choose language (en/ru/la)', 'en')
+
+                if (len == 'en'){
+                    alert(month_list_en)
+                }
+                else if (len == 'ru'){
+                    alert(month_list_ru)
+                }
+                else if (len == 'la'){
+                    alert(month_list_la)
+                }
+                else{
+                    alert('Incorrect language')
+                }
+            }
+
+        // TASK 4 ==================================================
+        function calculate() {
+            var operator = prompt('Choose operator (+;-;*;/) or (++;--)');
+
+            if (operator === "++" || operator === "--") { 
+                number = prompt("Value");
+                
+                switch (operator) {
+                    case "++":alert("Результат: " + ++number); break;
+                    case "--":alert("Результат: " + --number); break;
+                }
+            }
+            else {
+                const first_value = prompt('First value');
+                const second_value = prompt('Second value');
+                const result = eval(`${first_value}${operator}${second_value}`);
+                alert("Result: " + result);
+            }
+        }
+        </script>
+
+    </HEAD>
+
+    <BODY>
+
+        <button class="button" onclick="call_alert(' alert button clicked')">     alert  </button>
+        <button class="button" onclick="call_prompt(' prompt button clicked')">   prompt </button>
+        <button class="button" onclick="call_confirm(' confirm button clicked')"> confirm </button>
+
+        <button class="button" onclick="write_data()"> write data </button>
+        <button class="button" onclick="read_data()"> read data </button>
+
+        <button class="button" onclick="get_month()"> print month </button>
+
+        <button class="button" onclick="calculate()"> calculate </button>
+
+
+
+    </BODY>
+</HTML>

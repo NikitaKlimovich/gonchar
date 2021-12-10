@@ -1,0 +1,23 @@
+<html>
+
+<head>
+<title>Простейшая страничка</title>
+<script language="JavaScript">
+var a = 6, b = 2;
+// Примеры префиксных и постфиксных арифметических операций,
+// с которыми вам необходимо экспериментировать
+while (true) {
+    expression = prompt('enter math expression')
+    result = expression
+    expression = expression.replace(/(\d)(\+\+)/, '$1+1')
+    expression = expression.replace(/(\d)(\-\-)/, '$1-1')
+    expression = expression.replace(/(\+\+)(\d)/, '$2')
+    expression = expression.replace(/(\-\-)(\d)/, '$2')
+    result += '\n' + eval(expression)
+    alert(result)
+}
+
+</script>
+</head>
+<body></body>
+</html>

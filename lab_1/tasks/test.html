@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;.." rel="stylesheet">
+</head>
+
+--самое главное это добавить эти фреймы
+<frameset rows="50%, 50%">
+<frame name="top" src="./left.html" />
+<frame name="bot" src="./right.html" />
+</frameset>
+
+</html>
+
+--это файл с меню/главной страницей - left.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;.." rel="stylesheet">
+<title>Фотоальбом</title>
+<link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<div class="wrapper">
+				<div class="menu">
+					<ul class="ul-menu">
+
+						--здесь самое важное - это добавить target
+						<li><a href="./main.html" class="active" target="right">Главная</a></li>
+						<li><a href="./collection.html" target="right">Коллекции</a></li>
+						<li><a href="./sizes.html" target="right">Размеры</a></li>
+						<li><a href="./history.html" target="right">История</a></li>
+						<li><a href="./quiz.html" target="right">Тест</a></li>
+						<li><a href="./frame.html" target="right">Фреймы</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<main class="main">
+		<div class="wrapper">
+		<section class='empty-header'></section>
+		<section class="main-content">
+			<p>История в каждом снимке</p>
+			<div class="btn"><a href="./history.html">Немного истории</a></div>
+		</section>
+		</div>
+	</main>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Instruments</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <style type="text/css">
+        /* instrument's buttons */
+        .button{
+        display: block;
+        border: 2px solid black;
+        margin: 50px auto;
+        width: 1000px;
+        height: 100px;
+        font-size: 30px;
+        }
+
+        .button:hover {
+        background-color: turquoise;
+        }
+        /* */
+    </style>
+
+    <script type="text/javascript">
+        // MONTHS
+        function get_month() {
+            var lang = prompt('Choose language (en/ru/de/...)', 'ru')
+
+            var date = new Date()
+            var months = []
+            var result = ''
+
+            for (var i = 1; i<=12; i++){
+                date.setMonth(i)
+                try{
+                    months.push(date.toLocaleString(lang, {month: 'long'}))
+                }
+                catch{
+                    alert('Incorrect language')
+                    return 0
+                }
+            }
+            for (let i = 0; i < months.length; i++) {
+                if (i % 2 == 0) {sep = '\t\t'} else {sep = '\n'}
+                result += months[i] + sep
+            }
+            alert(result)
+        }
+
+        // CALCULATOR
+        // function calculate() {
+        //     var operator = prompt('Choose operator (+;-;*;/) or (++;--)');
+
+        //     if (operator === "++" || operator === "--") { 
+        //         number = prompt("Value");
+                
+        //         switch (operator) {
+        //             case "++":alert("Результат: " + ++number); break;
+        //             case "--":alert("Результат: " + --number); break;
+        //         }
+        //     }
+        //     else {
+        //         const first_value = prompt('First value');
+        //         const second_value = prompt('Second value');
+        //         const result = eval(`${first_value}${operator}${second_value}`);
+        //         alert("Result: " + result);
+        //     }
+        // }
+
+        // CALCULATOR
+        function calculate(){
+            expression = prompt('enter math expression')
+            if (!(/[+\-*\/]{0,2}\d[+\-*\/]{0,2}/g.test(expression))){
+                alert('Incorrect math expression')
+                return 0
+            }
+            result = expression
+            expression = expression.replace(/(\d+)(\+\+)/g, '($1+1)')
+            expression = expression.replace(/(\d+)(\-\-)/g, '($1-1)')
+            expression = expression.replace(/(\+\+)(\d+)/g, '($2+1)')
+            expression = expression.replace(/(\-\-)(\d+)/g, '($2-1)')
+            alert(result + '=' + eval(expression))
+        }
+
+        // ESCAPE
+        function escape(){
+            let escapeString = "Отступы с помощью escape-символа n.\n";
+            escapeString += "Табуляция t\tвиден\tотступ.\n";
+            escapeString += "Символ одинарная кавычка - \', двойная - \", обратный слэш - \\.\n";
+            escapeString += "Переход на следующую строку реализован с помощью символа возврата каретки.\r";
+            escapeString += "Символ возврата на одну позицию b - backup\b\b out.\r";
+            alert(escapeString);
+        }
+        
+    </script>
+
+    <body>
+        <div class="container">
+            <nav class="main-header">
+                <a class="logo" href="index.html">World Weather</a>
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Europe</button>
+                                <div class="dropdown-content">
+                                <a href="minsk.html">Minsk</a>
+                                <a href="moscow.html">Moscow</a>
+                                <a href="london.html">London</a>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Asia</button>
+                                <div class="dropdown-content">
+                                <a href="singapore.html">Singapore</a>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">America</button>
+                                <div class="dropdown-content">
+                                <a href="new york.html">New york</a>
+                                
+                            </div>
+                        </div> 
+                    </li>
+                </ul>
+                
+            </nav>
+            
+            <h1>Instruments</h1>
+
+            <div class="content-1">
+
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                
+            </div>
+
+            <div>
+                <button class="button" onclick="get_month()"> calendar </button>
+                <button class="button" onclick="calculate()"> calculator </button>
+                <button class="button" onclick="escape()"> escape </button>
+            </div>
+                
+            <div class="content-3">
+            </div>
+        </div>
+    </body>
+</html>
+

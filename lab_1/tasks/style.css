@@ -1,0 +1,211 @@
+*{
+    margin: 0px;
+    /* border: 1px solid black; */
+}
+
+body{
+    background-image: -moz-linear-gradient(top, turquoise, white 150px);
+}
+
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* _____ */
+/* NAVIGATION */
+/* _____ */
+.main-header{
+    margin-top: 30px;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; 
+}
+
+.logo{
+    font-size: 32px;
+    color: black;
+}
+
+.logo:hover {
+    background-color: turquoise;
+}
+
+.main-header ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 20px;
+
+}
+
+
+/* _____ */
+/* CARDS */
+/* _____ */
+.cards-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    text-align: center;
+}
+
+.card:hover{
+    box-shadow: 0 0 10px 4px turquoise;
+}
+
+.card img{
+    width:300px; height: 300px;
+}
+
+.card a{
+    font-size: 32px;
+    text-decoration: none;
+    color: black;
+}
+
+.card p{
+    margin-bottom: 5px;
+}
+
+.card a:hover{
+    background-color: turquoise;
+}
+
+/* _______ */
+/* CONTENT-1 */
+/* _______ */
+.content-1{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.content-1 img{
+    width: 400px;
+    margin-right: 50px;
+    opacity: 0.9;
+    border: 2px solid turquoise;
+}
+
+.content-1 p{
+    /* width: 450px; */
+    margin-right: 50px;
+}
+
+
+/* _______ */
+/* CONTENT-2 */
+/* _______ */
+.content-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-2 .steps{
+    width: 1100px;
+}
+
+.content-2 table{
+    border: 1px solid turquoise;
+}
+
+/* _______ */
+/* CONTENT-3 */
+/* _______ */
+
+.content-3{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.content-3 div{
+    margin-bottom: 50px;
+    max-width: 45%;
+}
+
+.ingredients-time-table{
+    width: 500px;
+}
+
+/* _______ */
+/*  QUIZ   */
+/* _______ */
+
+#quiz{
+    border: 2px solid turquoise;
+    margin-top: 50px;
+}
+
+#quiz label{
+    margin-right: 10px;
+}
+
+#quiz td{
+    max-width: 700px;
+    padding-bottom: 20px;
+}
+
+/* _______ */
+/* BUTTONS */
+/* _______ */
+.copy-button{
+    margin-top: 10px;
+    width: 200px;
+}
+
+ /* Dropdown Button */
+.dropbtn {
+     background-color: transparent;
+     color: black;
+     padding: 16px;
+     font-size: 20px;
+     border: none;
+     font-style: italic;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: turquoise;} 

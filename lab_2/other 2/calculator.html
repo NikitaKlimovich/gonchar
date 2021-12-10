@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Коллекция рекордов</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="index.html">О рекордах</a>
+      </li>
+      <li>
+        <a href="topDangerous.html">Топ опасных</a>
+      </li>
+      <li>
+        <a href="frames.html">FAQ</a>
+      </li>
+      <li>
+        <a href="olimpiada.html">Олимпиада 20-21</a>
+      </li>
+      <li>
+        <a href="test.html">Тест</a>
+      </li>
+      <li>
+        <a href="answers.html">Ответы</a>
+      </li>
+      <li>
+        <a href="source.html">Источники</a>
+      </li>
+      <li>
+        <a href="calculator.html">Калькулятор</a>
+      </li>
+      <li>
+        <a href="calendar.html">Календарь</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <form id="formCalc" onsubmit="return false">
+    <ul class="SG">
+      <li class="sgLi">
+        <div class="box">
+          <h3 class="testLabel">Первое число</h3>
+          <textarea name="firstNumber" rows="4" cols="50">
+            </textarea>
+        </div>
+      </li>
+      <li class="sgLi">
+        <div class="box">
+          <h3 class="testLabel">Второе число</h3>
+          <textarea name="secondNumber" rows="4" cols="50">
+            </textarea>
+        </div>
+      </li>
+      <li class="sgLi">
+        <div class="box">
+          <h3 class="testLabel">Операция (+, -, *, /, ++, --)</h3>
+          <textarea name="operator" rows="4" cols="50">
+            </textarea>
+        </div>
+      </li>
+      <li class="sgLi">
+        <div class="box">
+          <button name='calculateBtn' class='formBtns' style="position: relative; top: 30%;">Посчитать
+          </button>
+        </div>
+      </li>
+      <li class="sgLi">
+        <div class="box">
+          <h3 class="testLabel">Результат</h3>
+          <textarea readonly name="result" rows="4" cols="50">
+            </textarea>
+        </div>
+      </li>
+    </ul>
+    
+  </form>
+
+  <footer></footer>
+
+  <script src="js/calculatorScript.js"></script>
+</body>
+
+</html>

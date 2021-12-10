@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Minsk</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <script type="text/javascript">
+        async function getWeather(city) {
+            mock_data = {  
+            "coord":{  
+                "lon":-79.42,
+                "lat":43.7
+            },
+            "weather":[  
+                {  
+                    "id":804,
+                    "main":"Clouds",
+                    "description":"overcast clouds",
+                    "icon":"04n"
+                }
+            ],
+            "base":"stations",
+            "main":{  
+                "temp":292.15,
+                "pressure":1023,
+                "humidity":72,
+                "temp_min":291.15,
+                "temp_max":293.15
+            },
+            "visibility":14484,
+            "wind":{  
+                "speed":5.7,
+                "deg":130
+            },
+            "clouds":{  
+                "all":90
+            },
+            "dt":1537837200,
+            "sys":{  
+                "type":1,
+                "id":3721,
+                "message":0.0039,
+                "country":"CA",
+                "sunrise":1537873704,
+                "sunset":1537916966
+            },
+            "id":6167865,
+            "name":"Toronto",
+            "cod":200
+            }
+
+            // return mock_data;
+
+            var key = '36c239bf31750240174f1b2b52bb13d9';
+            const resp = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+key);
+            var data = await resp.json();
+            return data
+        }
+
+        async function setWeather(city) {
+            data = await getWeather(city);
+            console.log(data);
+            var celcius = Math.round(parseFloat(data.main.temp)-273.15) + '&deg;';
+            description = data.weather[0].description;
+            wind = data.wind.speed + ' m/s E';
+            humidity = data.main.humidity + ' %';
+            pressure = data.main.pressure + ' hPa';
+            document.getElementById('weather').innerHTML = `                        
+            <th>Current Weather</th>
+                <tr>
+                    <td>Temperature</td>
+                    <td>`+ celcius +`</td>
+                    <td> 14F </td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>`+ description +`</td>
+                </tr>
+                <tr>
+                    <td>Wind</td>
+                    <td>`+ wind +`</td>
+                    <td> 6 m/m E </td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td>`+ humidity +`</td>
+                    <td> 45 opd </td>
+                </tr>
+                <tr>
+                    <td>Pressure</td>
+                    <td>`+ pressure +`</td>
+                    <td> 1124 mm/mc </td>
+                </tr>
+            `
+        }
+    </script>
+
+    <body onload="setWeather('Minsk')">
+
+        <div class="container">
+            <nav class="main-header">
+                <a class="logo" href="index.html">World Weather</a>
+                <ul>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Europe</button>
+                                <div class="dropdown-content">
+                                <a href="minsk.html">Minsk</a>
+                                <a href="moscow.html">Moscow</a>
+                                <a href="london.html">London</a>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Asia</button>
+                                <div class="dropdown-content">
+                                <a href="singapore.html">Singapore</a>
+                            </div>
+                        </div> 
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">America</button>
+                                <div class="dropdown-content">
+                                <a href="new york.html">New york</a>
+                                
+                            </div>
+                        </div> 
+                    </li>
+                </ul>
+                
+            </nav>
+            
+            <h1>Minsk, Belarus</h1>
+
+            <div class="content-1">
+                <img src="images/Belarus.Minsk.jpg">
+
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                
+            </div>
+                
+            <div class="content-2">
+                    <table id="weather">
+
+                    </table>
+
+                <div class="steps">
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                            <ol>
+                                <li>In et orci nec nisi eleifend tincidunt</li>
+                                <p>
+                                    Proin auctor ut arcu semper dictum. Nam faucibus sit amet dui sit amet tempor.
+                                    In eget elit sit amet metus euismod euismod vel eu quam. Suspendisse vitae
+                                    pellentesque ante. Proin commodo sapien purus, in rhoncus tortor sollicitudin
+                                    imperdiet. Fusce sed libero eu nisi facilisis suscipit ac nec diam.
+                                </p>
+                                <li>Nullam gravida urna nec orci hendrerit</li>
+                                <p>
+                                    Duis elementum libero at placerat finibus. Proin nec iaculis urna. Fusce ac
+                                    metus eu orci consectetur pharetra. Fusce volutpat lacus vel porta aliquam.
+                                    Quisque quis turpis at magna tempor suscipit non ut diam. Donec tristique erat
+                                    sit amet velit pharetra tincidunt. Suspendisse et velit felis. Mauris varius
+                                    pharetra volutpat.
+                                </p>
+                            </ol>
+                            <br>
+                        <li>Lorem ipsum dolor sit amet</li>
+                            <p>
+                                Place rice noodles in the boiling sauce, reduce heat to medium,
+                                and simmer until noodles are tender, 5 to 10 minutes. Stir zucchini,
+                                red bell pepper, and chicken into sauce. Bring back to a boil, cover,
+                                and simmer until vegetables are just become tender, about 5 more minutes.
+                            </p>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-3">
+            </div>
+        </div>
+    </body>
+</html>
+

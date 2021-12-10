@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>World Weather</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <script type="text/javascript">
+        async function getWeather(city) {
+            mock_data = {  
+            "coord":{  
+                "lon":-79.42,
+                "lat":43.7
+            },
+            "weather":[  
+                {  
+                    "id":804,
+                    "main":"Clouds",
+                    "description":"overcast clouds",
+                    "icon":"04n"
+                }
+            ],
+            "base":"stations",
+            "main":{  
+                "temp":292.15,
+                "pressure":1023,
+                "humidity":72,
+                "temp_min":291.15,
+                "temp_max":293.15
+            },
+            "visibility":14484,
+            "wind":{  
+                "speed":5.7,
+                "deg":130
+            },
+            "clouds":{  
+                "all":90
+            },
+            "dt":1537837200,
+            "sys":{  
+                "type":1,
+                "id":3721,
+                "message":0.0039,
+                "country":"CA",
+                "sunrise":1537873704,
+                "sunset":1537916966
+            },
+            "id":6167865,
+            "name":"Toronto",
+            "cod":200
+            }
+
+            return mock_data;
+
+            var key = '36c239bf31750240174f1b2b52bb13d9';
+            const resp = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+city+'&appid='+key);
+            var data = await resp.json();
+            return data
+        }
+
+        function updateTime(){
+            setDateTime('Minsk','Europe/Minsk');
+            setDateTime('Moscow','Europe/Moscow');
+            setDateTime('New York','America/New_York');
+            setDateTime('London','Europe/London');
+
+            setWeather('Minsk');
+            setWeather('Moscow');
+            setWeather('New York');
+            setWeather('London');
+
+            setInterval(function () {
+                setDateTime('Minsk','Europe/Minsk');
+                setDateTime('Moscow','Europe/Moscow');
+                setDateTime('New York','America/New_York');
+                setDateTime('London','Europe/London');
+            }, 1000);
+        }
+
+        async function setWeather(city) {
+            data = await getWeather(city);
+            console.log(data);
+            var celcius = Math.round(parseFloat(data.main.temp)-273.15);
+            weather_data = celcius +'&deg;' +', '+ data.weather[0].description;
+            document.getElementById(city + '-weather').innerHTML = weather_data;
+        }
+
+        function setDateTime(city, zone){
+            var today = new Date();
+            date = today.toLocaleDateString('en-US', {timeZone: zone});
+            time = today.toLocaleTimeString('en-US', {timeZone: zone});
+            document.getElementById(city + '-datetime').innerHTML = date+' '+time;
+        }
+// ###########################################################################################
+        function writeCookie(arg, value) {
+            document.cookie = arg + '=' + value
+        }
+
+        function readCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+                }
+            }
+              return "";
+        }
+
+        function read_data() {
+            var name = readCookie('name')
+            var year = readCookie('year')
+            var group = readCookie('group')
+            alert(name + '\nbirth year ' + year + '\nfrom group ' + group)
+        }
+
+        function sign_in() {
+            var name = prompt("Your name: ")
+            var year = prompt("Your birth year: ")
+            var group = prompt("Your group: ")
+
+            if (confirm("Are you done?")){
+                writeCookie('name', name)
+                writeCookie('year', year)
+                writeCookie('group', group)
+
+                var name = readCookie('name')
+                var year = readCookie('year')
+                var group = readCookie('group')
+                alert("Your account has been created successfuly!\n" + 
+                      'name: ' + name + '\nbirth year: ' + year + '\nfrom group: ' + group)
+
+                document.getElementById("sign_in").innerHTML = name;
+
+            }
+            else {
+                alert("Changes discarded")
+            }
+        }
+
+    </script>
+
+    <body onLoad="updateTime()">
+
+        <div class="container">
+            <nav class="main-header">
+                <a class="logo" href="index.html">World Weather</a>
+
+                <ul>
+                    <li>
+                        <a id="sign_in" style="text-decoration: none; color: black;"
+                           onclick="sign_in()">Sign In</a>
+                    </li>
+
+                    <li>
+                        <a href="quiz.html" style="text-decoration: none; color: black;">Take a quiz</a>
+                    </li>
+
+                    <li>
+                        <a href="instruments.html" style="text-decoration: none; color: black;">Instruments</a>
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Europe</button>
+                            <div class="dropdown-content">
+                                <a href="minsk.html">Minsk</a>
+                                <a href="moscow.html">Moscow</a>
+                                <a href="london.html">London</a>
+                            </div>
+                        </div> 
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Asia</button>
+                            <div class="dropdown-content">
+                                <a href="singapore.html">Singapore</a>
+                            </div>
+                        </div> 
+                    </li>
+
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">America</button>
+                            <div class="dropdown-content">
+                                <a href="new york.html">New york</a>
+                            </div>
+                        </div> 
+                    </li>
+                </ul>
+                
+            </nav>
+
+            <div class="cards-container">
+                <div class="card">
+                    <img src="images/Belarus.Minsk.jpg">
+                    <a href="minsk.html">Belarus, Minsk</a>
+                    <p id="Minsk-datetime"></p>
+                    <p id="Minsk-weather"></p>
+                </div>
+                <div class="card">
+                    <img src="images/Russia.Moscow.jpg">
+                    <a href="moscow.html">Russia, Moscow</a>
+                    <p id="Moscow-datetime"></p>
+                    <p id="Moscow-weather"></p>
+                </div>
+                <div class="card">
+                    <img src="images/UK.London.jpg">
+                    <a href="london.html">UK, London</a>
+                    <p id="London-datetime"></p>
+                    <p id="London-weather"></p>
+                </div>
+                <div class="card">
+                    <img src="images/US.New_York.jpg">
+                    <a href="new york.html">USA, New York</a>
+                    <p id="New York-datetime"></p>
+                    <p id="New York-weather"></p>
+                </div>
+            </div>
+            
+            <div id="map" style="margin-top: 50px;">
+                <iframe src="world map.html" title="world map"
+                style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8); width: 100%; height: 500px;" frameborder="0">
+                </iframe>
+            </div>
+
+            <div class="content-3">
+                <div>
+                    <h2>World Time Zones</h2>
+                    <p>
+                        Earth is split up into a number of timezones.
+                        Most timezones are exactly one hour apart, and by convention compute
+                        their local time as an offset from UTC or GMT. In many locations,
+                        these offsets vary twice yearly due to DST transitions. Every country
+                        may have a particular standard time zone though, if it is more
+                        convenient for its world cooperation. The standard time zone is a
+                        region where the local or national authorities unify the time for a
+                        particular goal. The time zones obey specific rules referring to longitude.
+                    </p>
+                </div>
+                <div>
+                    <h2>GMT and UTC</h2>
+                    <p>
+                        The implementation of Greenwich Mean Time was the first step to determine
+                        the time zone of other countries in regard to GMT+0, while the concept of
+                        Coordinated Universal Time (UTC) was designed to provide a more accurate
+                        timekeeping system. Nevertheless, both of these time standards are widely
+                        used in the world for a similar purpose of time coordination.
+                        The differences in the terminology of GMT and UTC still create confusion
+                        in international cooperation. Even though UTC was introduced as a more
+                        accurate time standard, the occurrence of the leap seconds demonstrated
+                        the flaws for the universal time synchronisation.
+                    </p>
+                </div>
+                <div>
+                    <h2>Daylight Saving Time</h2>
+                    <p>
+                        The concept of Daylight Saving Time (DST) was proposed by Benjamin Franklin
+                        and refers to advancing the standard time within the region or zone by one
+                        hour to enhance the duration of daytime. Typically clocks are adjusted forward
+                        one hour in spring and backwards in autumn. Consequently, a location observing
+                        UTC+3 during standard time is at UTC+4 during DST; a location at UTC−6 during
+                        standard time is at UTC−5 during DST. Clock shifts are usually scheduled on
+                        weekends to lessen disruption of weekday schedules. 
+                    </p>
+                </div>
+                <div>
+                    <h2>AM/PM</h2>
+                    <p>
+                        These abbreviations are used to identify the time in the 12-hour clock format
+                        instead of using 24 hours. Considering that day has two cycles, AM and PM
+                        denote whether it is before or after the middle of a day. AM/PM within the
+                        12-hour time format is not effective way to indicate the precise time.
+                        There might be confusion regarding the time of a day as well as it can
+                        mislead in the date when midnight is not properly indicated. Considering
+                        that legal and other formal standards require the use of 24-hour convention. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
