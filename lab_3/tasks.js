@@ -67,14 +67,6 @@ function task_3_1_7(argument) {
 }
 
 function task_3_1_8(argument) {
-    var x = 0;
-    alert("While")
-    while (x < 10) {
-        x++;
-        if (x % 2 != 0) {continue}
-        alert(x);
-    }
-    
     alert("For")
     for (x=0; x<10; x++) {
         if (x % 2 != 0) {continue}
@@ -83,6 +75,10 @@ function task_3_1_8(argument) {
 }
 
 function task_3_1_9(argument) {
+    /* Воспользуйтесь оператором switch для написания сценария,
+    в котором будут выполняться различные операторы в зависимости от того,
+    какая буква введена в окне запроса: a, b, c, d или e. Не забудьте указать оператор,
+    используемый по умолчанию, для непредвиденных значений. */
     var yourchoice;
     yourchoice = prompt("Загадайте латинскую букву от a до e")
     switch (yourchoice) {
@@ -108,6 +104,12 @@ function task_3_1_9(argument) {
 }
 
 function task_3_1_10(argument) {
+    /*С использованием любого оператора цикла измените пример 3.5.10 из лекции так,
+    чтобы форма с требованием ввода пароля выводилась три раза и лишь после этого
+    загружалась бы дополнительная страница. После выполнения этого задания,
+    вы можете защитить свои страницы, если это, на ваш взгляд необходимо.
+    И не забудьте изменить пароль для доступа к вашим файлам на файловом сервере,
+    если знаете об опасности.*/
     var x = 3;
     do {
         --x;
@@ -131,6 +133,7 @@ function task_3_2_1(argument) {
 }
 
 function task_3_2_2(argument) {
+    // DEPRECATED
     alert("Goodbye")
 }
 
@@ -163,9 +166,8 @@ function task_3_2_3(argument) {
 }
 
 function task_3_3_1(argument) {
-    rndNum = Math.random(); //1-й вариант случайного числа
-    alert("Pадиус = " + rndNum);
-    alert("Площадь круга = " + Math.PI * (rndNum * rndNum));
+    rndNum = Math.floor(Math.random() * 101);
+    alert("Pадиус = " + rndNum + '\n'+ "Площадь круга = " + Math.PI * (rndNum * rndNum));
 }
 
 function task_3_3_2(argument) {
