@@ -110,16 +110,16 @@ function task_3_1_10(argument) {
     вы можете защитить свои страницы, если это, на ваш взгляд необходимо.
     И не забудьте изменить пароль для доступа к вашим файлам на файловом сервере,
     если знаете об опасности.*/
-    var x = 3;
+    var y = 4;
     do {
-        --x;
-        if (x == 0) { 
+        --y;
+        if (y == 0) { 
             alert("No tries left.")
             break;
         }
         pass = prompt("Enter password");
         if (pass != '123') {
-            alert("Incorrect password, tries left: " + (x - 1))
+            alert("Incorrect password, tries left: " + (y - 1))
         }
         else {
             alert("Correct password. Access granted.")
